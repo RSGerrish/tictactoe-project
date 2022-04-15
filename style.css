@@ -12,12 +12,17 @@ h1 {
   text-shadow: 1px 1px 2px #000000;
 }
 
+h2 {
+  color: #fff;
+  text-shadow: 1px 1px 2px #000000;
+}
+
 header {
   height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(98deg, #e7d322, #353333 15%, #353333 85%, #e7d322);
+  background: radial-gradient(rgba(53, 51, 51, 95%) 62%, rgba(131, 126, 82, 95%));
   box-shadow: 5px 5px 5px #d3d3d3;
   border-radius: 30px;
 }
@@ -34,6 +39,13 @@ header {
   border: none;
   box-shadow: 5px 5px 5px #000000;
   color: #353333;
+}
+
+.btn:active {
+  position:relative;
+  top: 3px;
+  left: 3px;
+  box-shadow: none;
 }
 
 .game-body {
@@ -59,4 +71,24 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.winner-window {
+  height: 400px;
+  width: 600px;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  margin: -200px -300px;
+  background: radial-gradient(rgba(53, 51, 51, 80%) 62%, rgba(131, 126, 82, 80%));
+  border-radius: 15px;
+  box-shadow: 5px 10px 10px #2e2e2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.winner-contents {
+  text-align: center;
 }

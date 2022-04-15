@@ -1,5 +1,4 @@
-const btnClear = document.querySelector('#btn-clear');
-const gameGrid = document.querySelector(".gameboard")
+const gameGrid = document.querySelector(".gameboard");
 let pieces = ["x", "o", "", "x", "", "o", "o", "", "x"];
 
 var gameBoard = (function() {
@@ -17,7 +16,7 @@ var gameBoard = (function() {
       pieces[i] = "";
     }
 
-    gameGrid.innerHTML = "";
+    console.log(pieces);
   };
 
   return {
@@ -25,23 +24,23 @@ var gameBoard = (function() {
   };
 })();
 
-var displayController = (function() {
+const Player = () => {
   let playerTurn = true;
 
   function _computerPlay() {
     let emptySpots = [];
 
     for (i = 0; i < 9; i++) {
-      if(gameBoard.pieces[i] === "") {emptySpots.push(i);}
+      if(pieces[i] === "") {emptySpots.push(i);}
     }
     
     randomChoice = Math.floor(Math.random() * emptySpots.length);
     randomIndex = emptySpots[randomChoice];
 
-    console.log(randomIndex);
     pieces[randomIndex] = "o";
     playerTurn = true;
     gameBoard.drawBoard();
+    displayController.checkWinCondition();
   };
 
   gameGrid.addEventListener("click", function(event) {
@@ -55,18 +54,55 @@ var displayController = (function() {
       
       playerTurn = false;
       gameBoard.drawBoard();
+      displayController.checkWinCondition();
       _computerPlay();
     }
   });
-})();
-
-const Player = () => {
-
 };
 
-btnClear.addEventListener("click", function() {
-  gameBoard.clearBoard();
-  gameBoard.drawBoard();
-});
+var displayController = (function() {
+  const btnClear = document.querySelector('#btn-clear');
+  const btnPlayAgain = document.querySelector('#btn-play-again');
+  const playerOne = Player();
 
-gameBoard.drawBoard();
+  gameBoard.drawBoard();
+
+  function checkWinCondition() {
+    const winWindow = document.querySelector(".winner-window")
+
+    if(pieces[0] === pieces[1] && pieces[0] === pieces[2] && pieces[0]) {
+      winWindow.style.visibility = "visible";
+    } else if(pieces[3] === pieces[4] && pieces[3] === pieces[5] && pieces[3]) {
+      winWindow.style.visibility = "visible";
+    } else if(pieces[6] === pieces[7] && pieces[6] === pieces[8] && pieces[6]) {
+      winWindow.style.visibility = "visible";
+    } else if(pieces[0] === pieces[3] && pieces[0] === pieces[6] && pieces[0]) {
+      winWindow.style.visibility = "visible";
+    } else if(pieces[1] === pieces[4] && pieces[1] === pieces[7] && pieces[1]) {
+      winWindow.style.visibility = "visible";
+    } else if(pieces[2] === pieces[5] && pieces[2] === pieces[8] && pieces[2]) {
+      winWindow.style.visibility = "visible";
+    } else if(pieces[0] === pieces[4] && pieces[0] === pieces[8] && pieces[0]) {
+      winWindow.style.visibility = "visible";
+    } else if(pieces[2] === pieces[4] && pieces[2] === pieces[6] && pieces[2]) {
+      winWindow.style.visibility = "visible";
+    }
+  };
+
+  btnClear.addEventListener("click", function() {
+    gameBoard.clearBoard();
+    gameBoard.drawBoard();
+  });
+
+  btnPlayAgain.addEventListener("click", function() {
+    const winWindow = document.querySelector(".winner-window")
+
+    gameBoard.clearBoard();
+    gameBoard.drawBoard();
+    winWindow.style.visibility = "hidden";
+  });
+
+  return {
+    checkWinCondition
+  };
+})();
