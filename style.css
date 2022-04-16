@@ -19,20 +19,27 @@ h2 {
 }
 
 header {
+  display: flex;
+  justify-content: center;
+}
+.header-container {
   height: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: rgb(180, 163, 12);
-  /*background: radial-gradient(rgba(53, 51, 51, 95%) 68%, rgba(131, 126, 82, 97%));*/
   box-shadow: 5px 5px 5px #d3d3d3;
   border-radius: 30px;
+  width: clamp(1240px, 80%, 1920px);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .header-ui {
   padding: 20px;
   margin: 0 30px;
   width: 340px;
+  min-width:310px;
   background-color: rgba(0, 0, 0, 50%);
   border-radius: 15px;
   font-weight: 700;
