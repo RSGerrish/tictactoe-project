@@ -67,24 +67,45 @@ var displayController = (function() {
 
   gameBoard.drawBoard();
 
+  function _whoWon() {
+    let playerName = document.querySelector('#player-name').value;
+    const winMsg = document.querySelector('.winner-h2');
+
+    if(pieces[0] === "x") {
+      if(playerName === "") {playerName = "You";}
+
+      winMsg.innerText = `${playerName} Wins!`
+    } else {
+      winMsg.innerText = `You Lost to the STUPID AI! LUL`
+    }
+  }
+
   function checkWinCondition() {
-    const winWindow = document.querySelector(".winner-window")
+    const winWindow = document.querySelector(".winner-window");
 
     if(pieces[0] === pieces[1] && pieces[0] === pieces[2] && pieces[0]) {
+      _whoWon();
       winWindow.style.visibility = "visible";
     } else if(pieces[3] === pieces[4] && pieces[3] === pieces[5] && pieces[3]) {
+      _whoWon();
       winWindow.style.visibility = "visible";
     } else if(pieces[6] === pieces[7] && pieces[6] === pieces[8] && pieces[6]) {
+      _whoWon();
       winWindow.style.visibility = "visible";
     } else if(pieces[0] === pieces[3] && pieces[0] === pieces[6] && pieces[0]) {
+      _whoWon();
       winWindow.style.visibility = "visible";
     } else if(pieces[1] === pieces[4] && pieces[1] === pieces[7] && pieces[1]) {
+      _whoWon();
       winWindow.style.visibility = "visible";
     } else if(pieces[2] === pieces[5] && pieces[2] === pieces[8] && pieces[2]) {
+      _whoWon();
       winWindow.style.visibility = "visible";
     } else if(pieces[0] === pieces[4] && pieces[0] === pieces[8] && pieces[0]) {
+      _whoWon();
       winWindow.style.visibility = "visible";
     } else if(pieces[2] === pieces[4] && pieces[2] === pieces[6] && pieces[2]) {
+      _whoWon();
       winWindow.style.visibility = "visible";
     }
   };

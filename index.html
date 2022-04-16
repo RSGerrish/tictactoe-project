@@ -10,9 +10,16 @@
 </head>
 <body>
   <header>
+    <div class="header-left"></div>
     <div class="header-contents">
       <h1>Tic-Tac-Toe</h1>
-      <button class="btn" id="btn-clear">Clear</button>
+    </div>
+    <div class="header-ui">
+      <label for="player-name">Player Name:&nbsp&nbsp</label>
+      <input type="text" id="player-name" name="player-name" placeholder="Chad Gigingston">
+      <div class="ui-controls">
+        <button class="btn" id="btn-clear">Start / Reset</button>
+      </div>
     </div>
   </header>
   <div class="game-body">
@@ -20,7 +27,10 @@
   </div>
   <div class="winner-window">
     <div class="winner-contents">
-      <h2 class="winner-h2">Would you like to play again?</h2>
+      <h2 class="winner-h2"></h2>
+      <br>
+      <h2>Would you like to play again?</h2>
+      <br>
       <button class="btn" id="btn-play-again">Play Again</button>
     </div>
   </div>
